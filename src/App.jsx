@@ -126,6 +126,26 @@ const playlist = [
   },
 ]
 
+const medicines = [
+  { name: 'Abrazo 500 mg', icon: '🫂', message: 'Indicaciones: vení, que te abrazo hasta que se te pase un poquito el cansancio.' },
+  { name: 'Beso sublingual', icon: '💋', message: 'Acción rápida y efecto prolongado: un beso mío, directo al corazón.' },
+  { name: 'Mimos XR', icon: '🧸', message: 'Liberación extendida de mimos para acompañarte durante todo el día.' },
+  { name: 'Te extraño Forte', icon: '💌', message: 'Dosis recomendada: que sepas que te pienso más de lo que digo.' },
+  { name: 'Quedate conmigo 24 h', icon: '🕰️', message: 'Tratamiento ideal: un día entero cerquita tuyo, sin mirar el reloj.' },
+]
+
+const letters = [
+  { title: 'Abrir cuando estés cansado', message: 'No tenés que poder con todo todo el tiempo. Ojalá pudiera alcanzarte un abrazo, dejarte descansar y recordarte que también merecés que te cuiden.' },
+  { title: 'Abrir cuando tengas un día de mierda', message: 'Este día no define quién sos ni todo lo bueno que hacés. Respirá: ya pasó una parte, y no tenés que atravesar lo que queda solo.' },
+  { title: 'Abrir cuando me extrañes', message: 'Yo también te extraño. Guardate este mensajito como un abrazo a distancia, con la promesa de que quiero volver a verte pronto.' },
+  { title: 'Abrir cuando necesites recordar cuánto valés', message: 'Valés por quien sos, por cómo escuchás, por cómo cuidás y también por todo lo que sos cuando no estás cuidando a nadie.' },
+  { title: 'Abrir cuando estés feliz', message: 'Me encanta imaginarte feliz. Ojalá pudiera estar ahí para festejar con vos y guardar un pedacito de este momento en la memoria.' },
+  { title: 'Abrir cuando no puedas dormir', message: 'Aflojá los hombros, soltá el día de a poquito. No hace falta resolver nada ahora. Cerrá los ojos: te mando calma y un beso.' },
+  { title: 'Abrir cuando necesites una sonrisa', message: 'Receta sencilla: acordate de alguna de nuestras pavadas, sonreí aunque sea un poquito y pensá que hay alguien que te quiere un montón.' },
+]
+
+const gameHearts = ['abrazo', 'beso', 'sonrisa', 'mimos', 'te quiero']
+
 function Heart({ filled = false }) {
   return <span className={filled ? 'heart filled' : 'heart'}>♥</span>
 }
@@ -137,6 +157,11 @@ function App() {
   const [pulse, setPulse] = useState(0)
   const [letterOpen, setLetterOpen] = useState(false)
   const [envelopeOpen, setEnvelopeOpen] = useState(false)
+  const [selectedMedicine, setSelectedMedicine] = useState(null)
+  const [diagnosisVisible, setDiagnosisVisible] = useState(false)
+  const [gameScore, setGameScore] = useState(0)
+  const [gameTurn, setGameTurn] = useState(0)
+  const [selectedLetter, setSelectedLetter] = useState(null)
 
   const completed = heartFound && treatment === 'amor' && pulse >= 5
 
@@ -147,6 +172,22 @@ function App() {
     setPulse(0)
     setLetterOpen(false)
     setEnvelopeOpen(false)
+    setSelectedMedicine(null)
+    setDiagnosisVisible(false)
+    setGameScore(0)
+    setGameTurn(0)
+    setSelectedLetter(null)
+  }
+
+  function downloadCertificate() {
+    const certificate = `<!doctype html><html lang="es"><meta charset="utf-8"><title>Certificado oficial para Lucio</title><style>body{margin:0;background:#fff3f6;color:#412f36;font:18px Georgia,serif;display:grid;place-items:center;min-height:100vh}.diploma{box-sizing:border-box;width:min(900px,92vw);padding:70px 55px;text-align:center;background:#fffdfb;border:12px double #e87894;outline:1px solid #e87894;outline-offset:-24px}h1{color:#d64f75;font-size:40px;letter-spacing:5px}h2{font-size:54px;margin:18px}p{line-height:1.8}.skills{display:inline-block;text-align:left;line-height:2}.signature{margin-top:40px;color:#bb5875;font-style:italic}@media print{body{background:white}.diploma{width:100%;min-height:95vh}}</style><main class="diploma"><p>🏆</p><h1>CERTIFICADO OFICIAL</h1><p>Se certifica que</p><h2>LUCIO</h2><p>ha demostrado competencias excepcionales en:</p><div class="skills">☑ Cuidar<br>☑ Escuchar<br>☑ Hacer reír<br>☑ Dar tranquilidad<br>☑ Robar corazones</div><p><strong>Especialización:</strong><br>Enfermería + cuidado emocional no autorizado.</p><p class="signature">La paciente que no piensa devolverte el corazón.</p></main></html>`
+    const file = new Blob([certificate], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(file)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'certificado-oficial-lucio.html'
+    link.click()
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000)
   }
 
   return (
@@ -211,6 +252,126 @@ function App() {
           <span>♥</span>
         </div>
       </section>
+
+      {step >= 1 && (
+        <>
+          <nav className="module-nav" aria-label="Secciones del expediente">
+            <a href="#guardia">Guardia</a>
+            <a href="#farmacia">Farmacia</a>
+            <a href="#monitor">Monitor</a>
+            <a href="#laboratorio">Laboratorio</a>
+            <a href="#certificado">Certificado</a>
+            <a href="#juego">Juego</a>
+            <a href="#cartas">Cartas</a>
+          </nav>
+
+          <main className="love-modules">
+            <section className="module night-shift" id="guardia">
+              <div className="module-kicker">REGISTRO DE GUARDIA · TURNO NOCHE</div>
+              <div className="night-clock">03:17 <span>AM</span></div>
+              <p className="night-quote">Mientras vos cuidás a otros,<br />hay alguien pensando en quién cuida de vos.</p>
+              <p className="night-note">Sé que hay noches en las que estás cansado, que cargás con la facultad, el trabajo y todo lo demás… y aun así seguís teniendo esa forma hermosa de cuidar.</p>
+            </section>
+
+            <section className="module pharmacy" id="farmacia">
+              <div className="module-kicker">FARMACIA DEL AMOR · RECETA Nº 001</div>
+              <div className="medicine-label">
+                <div className="medicine-brand">LUCIO<sup>®</sup></div>
+                <div className="medicine-details">
+                  <p><b>Principio activo:</b> ternura</p>
+                  <p><b>Dosis:</b> según necesidad</p>
+                  <p><b>Administración:</b> abrazos / besos / mimos</p>
+                  <p><b>Efectos adversos:</b> mariposas, sonrisas y dependencia emocional.</p>
+                  <p><b>Contraindicaciones:</b> ninguna conocida.</p>
+                </div>
+              </div>
+              <div className="medicine-list">
+                {medicines.map((medicine) => (
+                  <button key={medicine.name} type="button" className={selectedMedicine?.name === medicine.name ? 'medicine-option selected' : 'medicine-option'} onClick={() => setSelectedMedicine(medicine)}>
+                    <span>{medicine.icon}</span>{medicine.name}
+                  </button>
+                ))}
+              </div>
+              {selectedMedicine && <p className="medicine-message" role="status">{selectedMedicine.message}</p>}
+            </section>
+
+            <section className="module heart-monitor" id="monitor">
+              <div className="module-kicker">MONITOR CARDÍACO · PACIENTE: PAULINA</div>
+              <div className="monitor-screen">
+                <div className="monitor-hearts" aria-label="Cinco corazones">♥ ♥ ♥ ♥ ♥</div>
+                <div className="monitor-pulse" aria-hidden="true">▁▁▂▁▁▁▅▇▂▁▁▁▂▁▁▁▅▇▂▁▁</div>
+                <div className="beating-heart" aria-hidden="true">♥</div>
+                <p>Frecuencia cardíaca: <strong>anormalmente elevada.</strong></p>
+                <p>Causa probable: <strong>un enfermero.</strong></p>
+              </div>
+              <button className="module-button" type="button" onClick={() => setDiagnosisVisible(true)}>Ver diagnóstico</button>
+              {diagnosisVisible && <p className="diagnosis-reveal" role="status">Diagnóstico definitivo: <strong>Lucio.</strong> ❤️</p>}
+            </section>
+
+            <section className="module lab" id="laboratorio">
+              <div className="module-kicker">LABORATORIO DE SENTIMIENTOS · INFORME</div>
+              <div className="lab-table" role="table" aria-label="Resultados del análisis sentimental">
+                {[
+                  ['Cariño', '100%', 100], ['Confianza', '100%', 100], ['Mariposas', '999%', 100],
+                  ['Ganas de verlo', 'CRÍTICO', 100], ['Capacidad de olvidarlo', '0%', 0], ['Amor', 'POSITIVO ❤️', 100],
+                ].map(([name, result, fill]) => (
+                  <div className="lab-row" role="row" key={name}>
+                    <strong role="cell">{name}</strong>
+                    <span className="lab-bar" role="cell"><i style={{ width: `${fill}%` }} /></span>
+                    <b role="cell">{result}</b>
+                  </div>
+                ))}
+              </div>
+              <p className="lab-result"><b>Resultado:</b> incompatible con dejar de quererte.</p>
+            </section>
+
+            <section className="module certificate" id="certificado">
+              <div className="module-kicker">DOCUMENTO DE RECONOCIMIENTO</div>
+              <div className="certificate-paper">
+                <div className="certificate-medal">🏆</div>
+                <h2>CERTIFICADO OFICIAL</h2>
+                <p>Se certifica que</p>
+                <h3>LUCIO</h3>
+                <p>ha demostrado competencias excepcionales en:</p>
+                <ul><li>Cuidar</li><li>Escuchar</li><li>Hacer reír</li><li>Dar tranquilidad</li><li>Robar corazones</li></ul>
+                <p><b>Especialización:</b><br />Enfermería + cuidado emocional no autorizado.</p>
+                <p className="certificate-signature">La paciente que no piensa devolverte el corazón.</p>
+              </div>
+              <button className="module-button" type="button" onClick={downloadCertificate}>Descargar certificado</button>
+            </section>
+
+            <section className="module love-game" id="juego">
+              <div className="module-kicker">MINI JUEGO · ATRAPÁ LOS CORAZONES</div>
+              <h2>Juntá 100 puntos de amor</h2>
+              <p>Cada corazón que atrapes suma 20 puntos.</p>
+              <div className="game-score" aria-live="polite">{gameScore} <span>/ 100</span></div>
+              {gameScore < 100 ? (
+                <button className="catch-heart" type="button" onClick={() => { setGameScore((score) => Math.min(score + 20, 100)); setGameTurn((turn) => turn + 1) }}>
+                  <span>❤️</span>
+                  <b>{gameHearts[gameTurn % gameHearts.length]}</b>
+                  <small>atrapar · +20 puntos</small>
+                </button>
+              ) : (
+                <div className="game-unlocked" role="status">
+                  <h3>🎉 ¡MISIÓN COMPLETADA!</h3>
+                  <p>Has conseguido suficientes puntos para desbloquear:</p>
+                  <strong>UNA CARTA QUE NO ESTABA EN EL EXPEDIENTE.</strong>
+                  <p>Lucio, entre todas las cosas lindas que me pasaron, conocerte se volvió una de mis favoritas. Gracias por cuidarme también con tu forma de estar, por hacerme reír y por devolverme un poquito de luz. Te quiero muchísimo, y ojalá la vida nos regale muchos abrazos más. ❤️</p>
+                </div>
+              )}
+            </section>
+
+            <section className="module open-letters" id="cartas">
+              <div className="module-kicker">ARCHIVO PERSONAL · PARA LUCIO</div>
+              <h2>Cartas para abrir cuando…</h2>
+              <div className="letter-buttons">
+                {letters.map((letter, index) => <button type="button" key={letter.title} className={selectedLetter === index ? 'letter-choice selected' : 'letter-choice'} onClick={() => setSelectedLetter(index)}>💌 {letter.title}</button>)}
+              </div>
+              {selectedLetter !== null && <article className="opened-letter" role="status"><span>PARA LEER DESPACITO</span><p>{letters[selectedLetter].message}</p><strong>Estoy con vos. ♡</strong></article>}
+            </section>
+          </main>
+        </>
+      )}
 
       {step >= 1 && !completed && (
         <section className="game-card">

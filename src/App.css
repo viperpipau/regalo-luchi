@@ -951,6 +951,541 @@ footer {
   font-size: inherit;
 }
 
+.module-nav {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  padding: 12px max(16px, calc((100% - 920px) / 2));
+  overflow-x: auto;
+  background: rgba(255, 247, 250, 0.92);
+  border-block: 1px solid #f2d4de;
+  backdrop-filter: blur(12px);
+  scrollbar-width: thin;
+}
+
+.module-nav a {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border: 1px solid #efcad6;
+  border-radius: 999px;
+  color: #875565;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.module-nav a:hover,
+.module-nav a:focus-visible {
+  background: #e96588;
+  color: white;
+}
+
+.love-modules {
+  width: min(920px, calc(100% - 28px));
+  margin: 24px auto 60px;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 18px;
+  scroll-margin-top: 78px;
+}
+
+.module {
+  padding: clamp(22px, 5vw, 40px);
+  border: 1px solid #f0cbd6;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 48px rgba(183, 93, 117, 0.09);
+  scroll-margin-top: 78px;
+}
+
+.module-kicker {
+  color: #bd7186;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.night-shift {
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff1f5;
+  background:
+    linear-gradient(90deg, rgba(36, 23, 32, 0.97), rgba(54, 29, 43, 0.91)),
+    repeating-linear-gradient(0deg, transparent 0 32px, rgba(255, 255, 255, 0.07) 33px);
+  border-color: #573348;
+}
+
+.night-shift .module-kicker {
+  color: #ff9fb7;
+}
+
+.night-clock {
+  margin: 18px 0 8px;
+  color: #ffb1c6;
+  font-size: clamp(58px, 12vw, 92px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.night-clock span {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.night-quote {
+  margin: 12px 0 18px;
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(20px, 4vw, 26px);
+  line-height: 1.6;
+}
+
+.night-note {
+  max-width: 660px;
+  margin: 0;
+  color: #e9ced8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.medicine-label {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.7fr) 2fr;
+  margin: 22px 0;
+  overflow: hidden;
+  border: 1px solid #edbdcc;
+  border-radius: 12px;
+  background: #fff7fa;
+}
+
+.medicine-brand {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: #e96588;
+  color: white;
+  font-size: clamp(22px, 5vw, 36px);
+  font-weight: 800;
+}
+
+.medicine-brand sup {
+  align-self: start;
+  font-size: 12px;
+}
+
+.medicine-details {
+  padding: 12px 18px;
+}
+
+.medicine-details p {
+  margin: 5px 0;
+  color: #76535f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.medicine-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 9px;
+}
+
+.medicine-option,
+.letter-choice {
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #efd0d9;
+  border-radius: 12px;
+  background: #fff;
+  color: #704b58;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.medicine-option span {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.medicine-option:hover,
+.letter-choice:hover {
+  transform: translateY(-2px);
+}
+
+.medicine-option.selected,
+.letter-choice.selected {
+  border-color: #e96588;
+  background: #fff0f4;
+}
+
+.medicine-message,
+.diagnosis-reveal {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-left: 3px solid #e96588;
+  background: #fff3f6;
+  color: #79515f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.heart-monitor {
+  background: #fff8fa;
+}
+
+.monitor-screen {
+  margin: 20px 0 16px;
+  padding: 24px;
+  border: 1px solid #682f4a;
+  border-radius: 14px;
+  background: #17151a;
+  color: #ff9cbb;
+  text-align: center;
+  box-shadow: inset 0 0 35px rgba(239, 83, 139, 0.08);
+}
+
+.monitor-hearts {
+  color: #ff6d9f;
+  font-size: 19px;
+  letter-spacing: 8px;
+}
+
+.monitor-pulse {
+  margin: 14px auto 0;
+  overflow: hidden;
+  color: #ff80aa;
+  font-family: monospace;
+  font-size: clamp(12px, 3vw, 22px);
+  white-space: nowrap;
+  animation: monitor-scroll 3s linear infinite;
+}
+
+@keyframes monitor-scroll {
+  to { transform: translateX(-12px); }
+}
+
+.beating-heart {
+  margin: 4px 0 12px;
+  color: #ff6697;
+  font-size: 58px;
+  line-height: 1.2;
+  animation: heartbeat 0.9s infinite;
+}
+
+.monitor-screen p {
+  margin: 8px 0;
+  color: #f6dce6;
+  font-size: 13px;
+}
+
+.monitor-screen strong {
+  color: #ff90b2;
+}
+
+.module-button {
+  min-height: 44px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: #e96588;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(217, 79, 117, 0.18);
+}
+
+.module-button:hover {
+  background: #d95177;
+}
+
+.diagnosis-reveal strong {
+  color: #d95177;
+}
+
+.lab {
+  background: #f1f8f3;
+  border-color: #d1e5d7;
+}
+
+.lab .module-kicker {
+  color: #58836b;
+}
+
+.lab-table {
+  margin: 20px 0 12px;
+}
+
+.lab-row {
+  display: grid;
+  grid-template-columns: minmax(125px, 1fr) minmax(70px, 1.4fr) minmax(95px, 0.8fr);
+  align-items: center;
+  gap: 12px;
+  min-height: 43px;
+  border-bottom: 1px solid #dcebe0;
+  font-size: 12px;
+}
+
+.lab-row strong {
+  color: #455e4c;
+}
+
+.lab-row > b {
+  color: #52745d;
+  text-align: right;
+  font-size: 11px;
+}
+
+.lab-bar {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #dfece2;
+}
+
+.lab-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #7cae8b;
+}
+
+.lab-result {
+  margin: 20px 0 0;
+  color: #476a52;
+  font-size: 15px;
+}
+
+.certificate {
+  text-align: center;
+}
+
+.certificate-paper {
+  margin: 20px auto;
+  padding: clamp(22px, 5vw, 40px);
+  border: 5px double #e17a91;
+  outline: 1px solid #e9b5c2;
+  outline-offset: -12px;
+  background: #fffaf5;
+  color: #58414a;
+}
+
+.certificate-medal {
+  font-size: 30px;
+}
+
+.certificate-paper h2 {
+  margin: 8px 0 18px;
+  color: #ce5875;
+  font-size: clamp(19px, 5vw, 28px);
+  letter-spacing: 2px;
+}
+
+.certificate-paper h3 {
+  margin: 4px 0 12px;
+  color: #4f3740;
+  font-family: 'Pacifico', cursive;
+  font-size: 42px;
+  font-weight: 400;
+}
+
+.certificate-paper p {
+  margin: 12px 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.certificate-paper ul {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  color: #75505d;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.certificate-paper li::before {
+  content: '☑ ';
+  color: #ce5875;
+}
+
+.certificate-signature {
+  color: #bd5875;
+  font-family: 'Pacifico', cursive;
+  font-size: 17px !important;
+}
+
+.love-game {
+  text-align: center;
+}
+
+.love-game h2,
+.open-letters h2 {
+  margin: 12px 0 6px;
+  color: #4f3740;
+  font-size: 25px;
+}
+
+.love-game > p {
+  color: #98717d;
+  font-size: 13px;
+}
+
+.game-score {
+  margin: 14px 0 20px;
+  color: #dc5d7e;
+  font-size: 42px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.game-score span {
+  color: #b38b96;
+  font-size: 16px;
+}
+
+.catch-heart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: min(220px, 100%);
+  min-height: 160px;
+  margin: 0 auto;
+  border: 1px solid #f0cbd6;
+  border-radius: 18px;
+  background: #fff8fa;
+  color: #8c6370;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.catch-heart:hover {
+  transform: translateY(-3px) rotate(-2deg);
+  background: #ffeaf0;
+}
+
+.catch-heart > span {
+  color: #d75679;
+  font-size: 46px;
+  animation: heartbeat 1s infinite;
+}
+
+.catch-heart b {
+  color: #8c4e62;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.catch-heart small {
+  font-size: 10px;
+}
+
+.game-unlocked {
+  padding: 22px;
+  border: 1px solid #f1ccd6;
+  border-radius: 16px;
+  background: #fff5f8;
+  color: #75515e;
+  line-height: 1.8;
+}
+
+.game-unlocked h3 {
+  color: #d95177;
+}
+
+.game-unlocked strong {
+  color: #bc4d6c;
+}
+
+.open-letters h2 {
+  margin-bottom: 18px;
+}
+
+.letter-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 9px;
+}
+
+.opened-letter {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid #f0d2dc;
+  border-radius: 14px;
+  background: #fff8fa;
+  color: #73525d;
+  line-height: 1.8;
+  animation: letter-arrive 0.35s ease both;
+}
+
+.opened-letter > span {
+  color: #bd7186;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.opened-letter p {
+  margin: 10px 0;
+}
+
+.opened-letter strong {
+  color: #d95177;
+}
+
+@keyframes letter-arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 560px) {
+  .module-nav {
+    gap: 6px;
+  }
+
+  .module-nav a {
+    padding: 8px 10px;
+  }
+
+  .medicine-label {
+    grid-template-columns: 1fr;
+  }
+
+  .medicine-brand {
+    min-height: 72px;
+  }
+
+  .lab-row {
+    grid-template-columns: minmax(105px, 1fr) minmax(55px, 0.7fr) minmax(85px, 0.8fr);
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .monitor-screen {
+    padding: 20px 12px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monitor-pulse,
+  .beating-heart,
+  .opened-letter {
+    animation: none;
+  }
+}
+
 @media (max-width: 700px) {
   .hero {
     min-height: 600px;
