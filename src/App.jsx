@@ -491,6 +491,77 @@ function App() {
             </div>
           </section>
 
+          <section className="secret-experiences">
+            <div className="secret-header">
+              <span>♡ EXPERIENCIAS ESPECIALES</span>
+
+              <h2>
+                Porque un enfermero
+                <br />
+                también merece sorpresas. 🩺
+              </h2>
+
+              <p>
+                Elegí una de estas tres pequeñas
+                experiencias que preparé especialmente para vos.
+              </p>
+            </div>
+
+            <div className="secret-buttons">
+
+              <a
+                href="/regalo-luchi/guardia/"
+                className="secret-button"
+              >
+                <span className="secret-icon">🌙</span>
+
+                <span className="secret-info">
+                  <strong>Guardia nocturna</strong>
+                  <small>
+                    Para cuando estés cuidando a todos.
+                  </small>
+                </span>
+
+                <span className="secret-arrow">→</span>
+              </a>
+
+
+              <a
+                href="/regalo-luchi/farmacia/"
+                className="secret-button"
+              >
+                <span className="secret-icon">💊</span>
+
+                <span className="secret-info">
+                  <strong>Farmacia del amor</strong>
+                  <small>
+                    Tratamientos exclusivamente para mí.
+                  </small>
+                </span>
+
+                <span className="secret-arrow">→</span>
+              </a>
+
+
+              <a
+                href="/regalo-luchi/monitor/"
+                className="secret-button"
+              >
+                <span className="secret-icon">🫀</span>
+
+                <span className="secret-info">
+                  <strong>Monitor cardíaco</strong>
+                  <small>
+                    Hay algo raro con mi frecuencia cardíaca...
+                  </small>
+                </span>
+
+                <span className="secret-arrow">→</span>
+              </a>
+
+            </div>
+          </section>
+          
           <button type="button" className="restart" onClick={resetGame}>
             ↻ volver al expediente
           </button>
