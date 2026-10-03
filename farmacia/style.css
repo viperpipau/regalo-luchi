@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      145deg,
+      #211526,
+      #120e18
+    );
+
+  color: white;
+
+  font-family: 'Inter', sans-serif;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 20px;
+}
+
+.farmacia {
+
+  width: 100%;
+
+  max-width: 500px;
+
+  padding: 35px 22px;
+
+  text-align: center;
+
+  border-radius: 30px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.45);
+
+  animation: aparecer 0.8s ease;
+}
+
+@keyframes aparecer {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.cruz {
+
+  font-size: 38px;
+
+  color: #ff9fc6;
+
+  margin-bottom: 10px;
+}
+
+.etiqueta {
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+  color: #f3a3c4;
+
+  margin-bottom: 10px;
+}
+
+h1 {
+
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size: 46px;
+
+  color: #ffb5d2;
+
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+
+  color: #d5cbd2;
+
+  line-height: 1.6;
+
+  margin-bottom: 25px;
+}
+
+.medicamento {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  text-align: left;
+
+  padding: 15px;
+
+  margin: 10px 0;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.medicamento:hover {
+
+  transform: translateX(4px);
+
+  background:
+    rgba(255,160,200,0.12);
+}
+
+.icono {
+
+  font-size: 27px;
+
+  width: 40px;
+
+  text-align: center;
+}
+
+.medicamento strong {
+
+  display: block;
+
+  font-size: 15px;
+
+  margin-bottom: 5px;
+}
+
+.medicamento span {
+
+  display: block;
+
+  color: #aaa0a8;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+.receta {
+
+  margin-top: 20px;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,150,195,0.1);
+
+  border:
+    1px solid rgba(255,150,195,0.25);
+
+  color: #ffd5e6;
+
+  line-height: 1.6;
+
+  animation: aparecer 0.5s ease;
+}
+
+.ficha {
+
+  margin-top: 25px;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background:
+    rgba(0,0,0,0.18);
+
+  text-align: left;
+}
+
+.ficha p {
+
+  color: #cfc5cc;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  margin-bottom: 10px;
+}
+
+.ficha strong {
+
+  color: #ffb1d0;
+}
+
+button {
+
+  border: none;
+
+  border-radius: 50px;
+
+  padding: 14px 25px;
+
+  margin-top: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffa8cc,
+      #e77ca8
+    );
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.oculto {
+  display: none;
+}
+
+@media (max-width: 480px) {
+
+  .farmacia {
+    padding: 30px 18px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+}
