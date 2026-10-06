@@ -1,5 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import './App.css'
+import EvolutionNotes from './components/EvolutionNotes'
+import MedicalOrders from './components/MedicalOrders'
+import CardiologyConsult from './components/CardiologyConsult'
+import ClinicalCase from './components/ClinicalCase'
+import PatientWristband from './components/PatientWristband'
+import ClassifiedFile from './components/ClassifiedFile'
+import Expediente002 from './components/Expediente002'
+import useExpedienteProgress from './hooks/useExpedienteProgress'
 
 const LETTER = `
 Después de todo lo que viví, después de los días difíciles,
@@ -151,6 +159,7 @@ function Heart({ filled = false }) {
 }
 
 function App() {
+  const { progress: expedienteProgress, completeProcedure } = useExpedienteProgress()
   const xrayRef = useRef(null)
   const [xrayPos, setXrayPos] = useState({ x: 50, y: 50 })
   const [beeperMsg, setBeeperMsg] = useState('')
@@ -439,6 +448,12 @@ function App() {
             <a href="#certificado">Certificado</a>
             <a href="#juego">Juego</a>
             <a href="#cartas">Cartas</a>
+            <a href="#evolucion">Evolución</a>
+            <a href="#ordenes">Órdenes</a>
+            <a href="#interconsulta">Cardiología</a>
+            <a href="#caso-clinico">Caso clínico</a>
+            <a href="#identificacion">Identificación</a>
+            <a href="#archivo-clasificado">Archivo 002</a>
           </nav>
 
           <main className="love-modules">
@@ -899,6 +914,22 @@ function App() {
               </div>
               {selectedLetter !== null && <article className="opened-letter" role="status"><span>PARA LEER DESPACITO</span><p>{letters[selectedLetter].message}</p><strong>Estoy con vos. ♡</strong></article>}
             </section>
+
+            <EvolutionNotes />
+            <MedicalOrders
+              completed={expedienteProgress.ordenesMedicas}
+              onComplete={() => completeProcedure('ordenesMedicas')}
+            />
+            <CardiologyConsult
+              completed={expedienteProgress.interconsulta}
+              onComplete={() => completeProcedure('interconsulta')}
+            />
+            <ClinicalCase
+              completed={expedienteProgress.casoClinico}
+              onComplete={() => completeProcedure('casoClinico')}
+            />
+            <PatientWristband />
+            <ClassifiedFile progress={expedienteProgress} />
           </main>
         </>
       )}
@@ -1186,6 +1217,8 @@ function App() {
           </button>
         </section>
       )}
+
+      {step >= 1 && <Expediente002 />}
 
       <footer>Hecho a mano con código, amor y un poquito de locura. ♡</footer>
     </div>

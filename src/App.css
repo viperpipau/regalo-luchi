@@ -3622,3 +3622,430 @@ footer::before {
   animation: pop-in 0.5s ease;
   box-shadow: 0 10px 20px rgba(233, 101, 136, 0.3);
 }
+
+/* ── Nuevos registros del expediente ── */
+.evolution-sheet,
+.consult-report,
+.secret-file {
+  margin: 22px 0;
+  padding: clamp(20px, 4vw, 30px);
+  border: 1px solid #edbdcc;
+  border-radius: var(--r-sm);
+  background: #fffdfb;
+  color: #684954;
+  box-shadow: inset 0 0 30px rgba(233, 101, 136, 0.035);
+}
+
+.evolution-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #e8b8c7;
+  color: var(--rose-600);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.evolution-sheet p {
+  min-height: 54px;
+  margin: 24px 0;
+  font-family: "Courier New", monospace;
+  line-height: 1.8;
+  animation: letter-arrive 0.35s ease both;
+}
+
+.evolution-sheet small {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.medical-orders h2,
+.clinical-case h2,
+.classified-file h2,
+.next-file h2 {
+  color: var(--rose-deep);
+}
+
+.orders-list {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 50px;
+  padding: 12px 15px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.7);
+  color: #704b58;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.order-item:hover,
+.order-item.checked {
+  border-color: var(--rose-400);
+  background: #fff5f8;
+}
+
+.order-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.order-box {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--rose-300);
+  border-radius: 6px;
+}
+
+.order-item.checked .order-box {
+  border-color: var(--rose-500);
+  background: var(--rose-500);
+}
+
+.order-item.checked .order-box::after {
+  content: "✓";
+  color: white;
+  font-weight: 800;
+}
+
+.order-item.contraindicated {
+  border-style: dashed;
+}
+
+.medical-error {
+  display: grid;
+  gap: 5px;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-left: 4px solid #b34c62;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: #fff0f2;
+  color: #854053;
+  animation: letter-arrive 0.35s ease both;
+}
+
+.medical-error span,
+.case-status span,
+.consult-finished span {
+  font-size: 13px;
+}
+
+.procedure-complete {
+  margin: 18px 0 0;
+  color: var(--mint-600);
+  font-weight: 800;
+}
+
+.consult-reason {
+  margin: 22px 0;
+}
+
+.consult-report {
+  display: grid;
+  gap: 12px;
+  animation: letter-arrive 0.5s ease both;
+}
+
+.consult-report > strong {
+  color: var(--rose-600);
+  letter-spacing: 1px;
+}
+
+.consult-report p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.consult-finished {
+  display: grid;
+  gap: 5px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px dashed #e8b8c7;
+  color: var(--rose-700);
+}
+
+.clinical-content {
+  margin-top: 20px;
+}
+
+.clinical-symptoms {
+  padding: 18px 18px 18px 38px;
+  border-radius: var(--r-sm);
+  background: #fff7fa;
+  color: #704b58;
+  line-height: 1.9;
+}
+
+.clinical-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.clinical-options button {
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-sm);
+  background: linear-gradient(145deg, #fff, #fff8fa);
+  color: #704b58;
+  font-weight: 700;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.clinical-options button:hover {
+  border-color: var(--rose-400);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(233, 101, 136, 0.1);
+}
+
+.case-status {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: var(--r-sm);
+  animation: letter-arrive 0.35s ease both;
+}
+
+.case-status .module-button {
+  width: fit-content;
+  margin-top: 8px;
+}
+
+.wrong-answer {
+  border: 1px solid #efbac6;
+  background: #fff0f3;
+  color: #8b4355;
+}
+
+.correct-answer {
+  border: 1px solid var(--mint-200);
+  background: var(--mint-50);
+  color: var(--mint-600);
+}
+
+.wristband {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.65fr) 2fr;
+  margin: 22px 0;
+  overflow: hidden;
+  border: 1px solid #edbdcc;
+  border-radius: var(--r-md);
+  background: #fffdfb;
+}
+
+.wristband-code {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  background: linear-gradient(135deg, var(--rose-500), var(--rose-600));
+  color: white;
+}
+
+.wristband-code span,
+.wristband-code small {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.wristband-code strong {
+  font-size: 24px;
+}
+
+.wristband dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 24px;
+}
+
+.wristband dt {
+  color: #bd7186;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.wristband dd {
+  margin: 3px 0 0;
+  color: #5e414b;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.classified-file {
+  text-align: center;
+}
+
+.classified-locked,
+.classified-unlocked {
+  padding: 20px 0 4px;
+}
+
+.lock-mark {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border: 2px solid #d8acb9;
+  border-radius: 50%;
+  color: #bd7186;
+  font-size: 32px;
+  transform: rotate(90deg);
+}
+
+.classified-locked > strong {
+  color: #956272;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.classified-progress {
+  width: min(420px, 100%);
+  height: 8px;
+  margin: 16px auto 0;
+  overflow: hidden;
+  border-radius: var(--r-full);
+  background: var(--rose-100);
+}
+
+.classified-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--rose-400), var(--rose-600));
+  transition: width 0.45s ease;
+}
+
+.classified-file.unlocked {
+  border-color: var(--mint-200);
+}
+
+.secret-file {
+  text-align: left;
+}
+
+.secret-file p {
+  line-height: 1.8;
+}
+
+.secret-file strong {
+  display: block;
+  padding-top: 16px;
+  border-top: 1px dashed #e8b8c7;
+  color: var(--rose-600);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.expediente-closing {
+  width: min(920px, calc(100% - 28px));
+  margin: 70px auto 30px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.closed-case {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  color: #9a6b79;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.closing-transition {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 32px 0;
+  color: var(--rose-400);
+}
+
+.closing-transition::before,
+.closing-transition::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--rose-300), transparent);
+}
+
+.closing-transition span {
+  animation: heartbeat 1.8s infinite;
+}
+
+.next-file {
+  padding: clamp(28px, 6vw, 56px);
+  border: 1px solid rgba(104, 47, 74, 0.35);
+  border-radius: var(--r-lg);
+  background: linear-gradient(160deg, #201622, #301d2a);
+  color: #f6dce6;
+  box-shadow: 0 20px 55px rgba(48, 29, 42, 0.22);
+}
+
+.next-file .module-kicker {
+  color: #db91a8;
+}
+
+.next-file h2 {
+  margin: 12px 0;
+  color: #fff1f5;
+  font-size: clamp(30px, 7vw, 52px);
+}
+
+.next-file > strong {
+  color: #ffabc1;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.next-file > p {
+  margin: 25px 0;
+  color: #dcbfca;
+  font-style: italic;
+}
+
+.next-file-note {
+  display: grid;
+  gap: 5px;
+  color: #ead4dc;
+}
+
+@media (max-width: 620px) {
+  .clinical-options,
+  .wristband,
+  .wristband dl {
+    grid-template-columns: 1fr;
+  }
+
+  .wristband-code {
+    min-height: 150px;
+  }
+
+  .closed-case {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
