@@ -8,6 +8,9 @@ import PatientWristband from './components/PatientWristband'
 import ClassifiedFile from './components/ClassifiedFile'
 import Expediente002 from './components/Expediente002'
 import useExpedienteProgress from './hooks/useExpedienteProgress'
+import ExpedienteCover from './components/expediente/ExpedienteCover'
+import MusicPlayer from './components/audio/MusicPlayer'
+import NursingHub from './components/nursing/NursingHub'
 
 const LETTER = `
 Después de todo lo que viví, después de los días difíciles,
@@ -111,29 +114,6 @@ Porque me devolviste la alegría.
 Porque me devolviste a mí.
 `
 
-const playlist = [
-  {
-    title: 'Si Te Sentís Sola',
-    emoji: '💗',
-    url: 'https://open.spotify.com/search/Si%20Te%20Sent%C3%ADs%20Sola',
-  },
-  {
-    title: 'Goteo',
-    emoji: '💎',
-    url: 'https://open.spotify.com/search/Goteo',
-  },
-  {
-    title: 'H.I.E.L.O.',
-    emoji: '🧊',
-    url: 'https://open.spotify.com/search/HIELO',
-  },
-  {
-    title: 'She Dont Give a FO',
-    emoji: '🖤',
-    url: 'https://open.spotify.com/search/She%20Dont%20Give%20a%20FO',
-  },
-]
-
 const medicines = [
   { name: 'Abrazo 500 mg', icon: '🫂', message: 'Indicaciones: vení, que te abrazo hasta que se te pase un poquito el cansancio.' },
   { name: 'Beso sublingual', icon: '💋', message: 'Acción rápida y efecto prolongado: un beso mío, directo al corazón.' },
@@ -160,6 +140,14 @@ function Heart({ filled = false }) {
 
 function App() {
   const { progress: expedienteProgress, completeProcedure } = useExpedienteProgress()
+  const [coverOpened, setCoverOpened] = useState(() => {
+    if (typeof window === 'undefined') return false
+    try {
+      return window.sessionStorage.getItem('expediente001_opened') === 'true'
+    } catch {
+      return false
+    }
+  })
   const xrayRef = useRef(null)
   const [xrayPos, setXrayPos] = useState({ x: 50, y: 50 })
   const [beeperMsg, setBeeperMsg] = useState('')
@@ -361,6 +349,28 @@ function App() {
     window.setTimeout(() => URL.revokeObjectURL(url), 1000)
   }
 
+  const openCover = () => {
+    try {
+      window.sessionStorage.setItem('expediente001_opened', 'true')
+    } catch {
+      // La carátula sigue funcionando aunque el navegador bloquee sessionStorage.
+    }
+    setCoverOpened(true)
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }))
+  }
+
+  const showCover = () => {
+    try {
+      window.sessionStorage.removeItem('expediente001_opened')
+    } catch {
+      // Sin acción adicional si el almacenamiento de sesión no está disponible.
+    }
+    setCoverOpened(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  if (!coverOpened) return <ExpedienteCover onOpen={openCover} />
+
   return (
     <div className="app-shell">
       <div className="floating f1">♡</div>
@@ -378,7 +388,10 @@ function App() {
           </div>
         </div>
 
-        <div className="case-number">CASO Nº 001</div>
+        <div className="topbar-actions">
+          <button type="button" className="cover-return" onClick={showCover}>VER CARÁTULA</button>
+          <div className="case-number">CASO Nº 001</div>
+        </div>
       </header>
 
       <section className="hero">
@@ -453,6 +466,8 @@ function App() {
             <a href="#interconsulta">Cardiología</a>
             <a href="#caso-clinico">Caso clínico</a>
             <a href="#identificacion">Identificación</a>
+            <a href="#musica">Audio</a>
+            <a href="#enfermeria-avanzada">Evaluación</a>
             <a href="#archivo-clasificado">Archivo 002</a>
           </nav>
 
@@ -929,6 +944,8 @@ function App() {
               onComplete={() => completeProcedure('casoClinico')}
             />
             <PatientWristband />
+            <MusicPlayer />
+            <NursingHub />
             <ClassifiedFile progress={expedienteProgress} />
           </main>
         </>
@@ -1150,34 +1167,6 @@ function App() {
               </article>
             </div>
           </div>
-
-          <section className="playlist">
-            <div className="playlist-title">
-              <span>♡ PLAYLIST</span>
-              <h2>Canciones para vos</h2>
-              <p>Porque algunas personas también se recuerdan con música.</p>
-            </div>
-
-            <div className="songs">
-              {playlist.map((song, index) => (
-                <a
-                  key={song.title}
-                  href={song.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="song"
-                >
-                  <div className="song-number">0{index + 1}</div>
-                  <div className="album">{song.emoji}</div>
-                  <div className="song-info">
-                    <strong>{song.title}</strong>
-                    <small>playlist visual · para Luchi</small>
-                  </div>
-                  <div className="play">▶</div>
-                </a>
-              ))}
-            </div>
-          </section>
 
           <section className="final-message">
             <div className="big-heart">♥</div>

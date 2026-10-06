@@ -1,0 +1,38 @@
+export const songs = [
+  {
+    id: 'song-01',
+    title: 'Si Te Sentís Sola',
+    artist: 'Duki',
+    youtubeId: 'Yu7LlLUR2es',
+    startAt: 0,
+    icon: '💗',
+    message: 'Para esos momentos en los que quiero que recuerdes que nunca estás solo.',
+  },
+  {
+    id: 'song-02',
+    title: 'Goteo',
+    artist: 'Duki',
+    youtubeId: 'FRthkpJ_NFo',
+    startAt: 0,
+    icon: '💎',
+    message: 'Una canción para subir el volumen y olvidarnos un rato de todo lo demás.',
+  },
+  {
+    id: 'song-03',
+    title: 'H.I.E.L.O.',
+    artist: 'Duki x Obie WanShot',
+    youtubeId: '3y-BLBlBk_8',
+    startAt: 0,
+    icon: '🧊',
+    message: 'Hay canciones que guardan épocas enteras; esta queda archivada acá con vos.',
+  },
+  {
+    id: 'song-04',
+    title: 'She Don’t Give a FO',
+    artist: 'Duki ft. Khea',
+    youtubeId: 'qKUblSAKXtw',
+    startAt: 0,
+    icon: '🖤',
+    message: 'Para compartir auriculares, miradas y algún viaje que todavía nos debemos.',
+  },
+]

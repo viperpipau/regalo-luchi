@@ -1,0 +1,58 @@
+.nursing-hub > h2 { margin: 10px 0 6px; }
+.nursing-disclaimer { margin-bottom: 20px; color: var(--text-secondary); font-size: 11px; line-height: 1.6; }
+.nursing-rank { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 8px; margin: 20px 0; }
+.nursing-rank > div { display: grid; gap: 4px; padding: 12px; border: 1px solid var(--glass-border); border-radius: var(--r-sm); background: #fff8fa; }
+.nursing-rank span { color: #bd7186; font-size: 7px; font-weight: 800; letter-spacing: 1px; }
+.nursing-rank strong { color: var(--rose-deep); font-size: 13px; }
+.streak-note { padding: 12px 15px; border-left: 3px solid var(--rose-500); background: var(--rose-50); color: var(--rose-700); font-size: 11px; font-weight: 800; }
+.level-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.level-card { min-height: 170px; padding: 20px; border: 1px solid var(--glass-border); border-radius: var(--r-md); background: linear-gradient(145deg, #fff, #fff8fa); color: #704b58; text-align: left; transition: all .25s ease; }
+.level-card:not(:disabled):hover { transform: translateY(-3px); border-color: var(--rose-400); box-shadow: 0 10px 25px rgba(233,101,136,.1); }
+.level-card:disabled { opacity: .48; cursor: not-allowed; }
+.level-card.completed { border-color: var(--mint-200); background: var(--mint-50); }
+.level-card span { color: var(--rose-600); font-size: 10px; font-weight: 900; letter-spacing: 1px; }
+.level-card p { min-height: 56px; margin: 15px 0; font-size: 12px; line-height: 1.6; }
+.level-card strong { font-size: 9px; letter-spacing: .7px; }
+.nursing-actions { display: flex; flex-wrap: wrap; gap: 9px; margin: 18px 0; }
+.romantic-files { display: grid; gap: 8px; margin: 22px 0; padding: 20px; border: 1px dashed #e8b8c7; border-radius: var(--r-sm); background: #fff7fa; }
+.romantic-files p { margin: 0; color: #79515f; font-size: 12px; line-height: 1.6; }
+.reset-nursing { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--glass-border); }
+.reset-nursing > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #8b4355; font-size: 10px; }
+.reset-nursing button, .text-medical-button, .secondary-medical-button { padding: 8px 11px; border: 1px solid #e3b7c3; border-radius: 8px; background: transparent; color: #9e5369; font-size: 8px; font-weight: 800; letter-spacing: .8px; }
+.evaluation-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 22px 0 18px; color: #a36175; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.question-meta { display: flex; justify-content: space-between; color: #bd7186; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.nursing-question h3, .chained-case h3, .mini-game-sheet h3 { margin: 15px 0 20px; color: var(--rose-deep); font-size: clamp(17px, 3vw, 22px); line-height: 1.45; }
+.nursing-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.nursing-options button { min-height: 55px; padding: 13px 15px; border: 1px solid var(--glass-border); border-radius: var(--r-sm); background: linear-gradient(145deg, #fff, #fff8fa); color: #704b58; text-align: left; font-size: 12px; font-weight: 700; transition: all .2s ease; }
+.nursing-options button:not(:disabled):hover { transform: translateY(-2px); border-color: var(--rose-400); }
+.nursing-options button:disabled { cursor: default; opacity: .68; }
+.nursing-options button.correct-option { border-color: var(--mint-400); background: var(--mint-50); opacity: 1; }
+.answer-feedback { margin-top: 16px; padding: 16px 18px; border-radius: var(--r-sm); animation: letter-arrive .3s ease both; }
+.answer-feedback strong { font-size: 10px; letter-spacing: 1px; }
+.answer-feedback p { margin: 7px 0 0; font-size: 12px; line-height: 1.65; }
+.answer-feedback.is-correct { border: 1px solid var(--mint-200); background: var(--mint-50); color: var(--mint-600); }
+.answer-feedback.is-wrong { border: 1px solid #efbac6; background: #fff0f3; color: #8b4355; }
+.answer-feedback .secondary-medical-button { margin-top: 10px; }
+.next-question { margin-top: 16px; }
+.evaluation-result { display: grid; justify-items: start; gap: 12px; padding: 25px; border: 1px solid #edbdcc; border-radius: var(--r-md); background: #fffdfb; }
+.evaluation-result h3 { margin: 0; color: var(--rose-600); }
+.evaluation-result p { margin: 0; }
+.evaluation-result > strong { color: var(--rose-700); font-size: 11px; letter-spacing: 1px; }
+.result-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.romantic-unlock { padding: 14px; border-left: 3px solid var(--rose-500); background: var(--rose-50); color: #79515f; }
+.case-description, .scenario-box { padding: 15px; border-left: 3px solid var(--rose-400); background: #fff7fa; color: #704b58; line-height: 1.7; }
+.mini-game-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.mini-game-tabs button { padding: 9px 11px; border: 1px solid var(--glass-border); border-radius: var(--r-full); background: white; color: #986274; font-size: 9px; font-weight: 800; }
+.mini-game-tabs button.selected { border-color: var(--rose-500); background: var(--rose-100); color: var(--rose-700); }
+.mini-game-sheet { padding: 22px; border: 1px solid #edbdcc; border-radius: var(--r-md); background: #fffdfb; }
+.mini-game-sheet > p { margin: 5px 0; color: #704b58; }
+.numeric-answer { display: flex; align-items: end; gap: 10px; margin-top: 20px; }
+.numeric-answer label { flex: 1; display: grid; gap: 7px; color: #986274; font-size: 10px; font-weight: 800; }
+.numeric-answer input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid #e3b7c3; border-radius: var(--r-sm); background: white; color: var(--rose-deep); outline: none; }
+.numeric-answer input:focus { border-color: var(--rose-500); box-shadow: 0 0 0 3px rgba(233,101,136,.1); }
+@media (max-width: 700px) {
+  .nursing-rank { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nursing-rank > div:first-child { grid-column: 1 / -1; }
+  .level-grid, .nursing-options { grid-template-columns: 1fr; }
+  .numeric-answer { align-items: stretch; flex-direction: column; }
+}
