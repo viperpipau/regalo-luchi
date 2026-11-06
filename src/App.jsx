@@ -469,6 +469,7 @@ function App() {
             <a href="#musica">Audio</a>
             <a href="#enfermeria-avanzada">Evaluación</a>
             <a href="#archivo-clasificado">Archivo 002</a>
+            <a href="#expediente-002">The Nurse Challenge</a>
           </nav>
 
           <main className="love-modules">
