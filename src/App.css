@@ -2591,6 +2591,471 @@ footer::before {
   background: var(--rose-400);
 }
 
+/* Spider-Man x Duki visual direction */
+:root {
+  --rose-50: #090b10;
+  --rose-100: #11151d;
+  --rose-200: #202630;
+  --rose-300: #3a4452;
+  --rose-400: #ff6577;
+  --rose-500: #f13b55;
+  --rose-600: #d72c49;
+  --rose-700: #b51f3b;
+  --rose-800: #85172f;
+  --rose-deep: #f4f5f8;
+  --blush: #11151d;
+  --cream: #151a22;
+  --lavender: #211629;
+  --peach: #21171b;
+  --mint-50: #10251f;
+  --mint-200: #245844;
+  --mint-400: #4bc99b;
+  --mint-600: #72dfb0;
+  --text-primary: #f4f5f8;
+  --text-secondary: #a5adba;
+  --text-muted: #788392;
+  --glow-rose: rgba(241, 59, 85, .24);
+  --glow-rose-strong: rgba(241, 59, 85, .4);
+  --glass-bg: rgba(19, 23, 31, .82);
+  --glass-border: rgba(220, 227, 238, .11);
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 28px;
+  color: var(--text-primary);
+  background: var(--rose-50);
+}
+
+body {
+  background: #090b10;
+  color: var(--text-primary);
+}
+
+body::before {
+  background:
+    radial-gradient(ellipse 620px 480px at 9% 12%, rgba(162, 28, 54, .19), transparent 70%),
+    radial-gradient(ellipse 540px 440px at 92% 32%, rgba(126, 35, 122, .16), transparent 72%),
+    radial-gradient(ellipse 560px 340px at 50% 100%, rgba(34, 57, 91, .16), transparent 75%),
+    linear-gradient(145deg, #090b10, #10131b 54%, #0b0c12);
+  background-size: 100% 100%;
+  animation: none;
+}
+
+body::after {
+  content: "";
+  inset: 0;
+  width: auto;
+  height: auto;
+  background:
+    repeating-radial-gradient(circle at 100% 0%, transparent 0 38px, rgba(244, 245, 248, .035) 39px 40px, transparent 41px 72px),
+    repeating-conic-gradient(from 0deg at 100% 0%, transparent 0deg 14deg, rgba(244, 245, 248, .035) 14.3deg 14.55deg, transparent 14.8deg 30deg);
+  opacity: .7;
+  animation: none;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 68% 68% at 100% 0%, #000 8%, transparent 100%);
+  mask-image: radial-gradient(ellipse 68% 68% at 100% 0%, #000 8%, transparent 100%);
+}
+
+.app-shell {
+  isolation: isolate;
+}
+
+.topbar {
+  padding: 10px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  background: rgba(13, 16, 23, .76);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .2);
+  backdrop-filter: blur(18px);
+}
+
+.logo > span,
+.medical-sticker {
+  border-color: rgba(241, 59, 85, .45);
+  background: linear-gradient(145deg, #1d222c, #11141b);
+  color: #ff536a;
+  box-shadow: 0 0 26px rgba(241, 59, 85, .17), 0 10px 28px rgba(0, 0, 0, .3);
+}
+
+.logo strong {
+  background: linear-gradient(110deg, #f4f5f8 20%, #ff6577 76%, #d979e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.logo small,
+.hero-note,
+.hero-subtitle {
+  color: var(--text-secondary);
+}
+
+.case-number,
+.mini-sticker,
+.ecg-strip {
+  border-color: var(--glass-border);
+  background: rgba(20, 24, 33, .78);
+  color: #ff8a9a;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, .2);
+}
+
+.hero h1 {
+  color: #f3f4f7;
+  text-shadow: 0 14px 52px rgba(0, 0, 0, .35);
+}
+
+.hero h1 span,
+.letter-card h2,
+.little-things h2 span {
+  background: linear-gradient(115deg, #ff536b, #f13b55 48%, #d878dc);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.eyebrow,
+.hero-note span,
+.module-kicker,
+.case-label,
+.test-number {
+  color: #ff8291;
+}
+
+.start-button,
+.module-button,
+.play,
+.dispenser-button {
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: linear-gradient(110deg, #b91f3d, #ef3b56 56%, #9a328e);
+  box-shadow: 0 8px 26px rgba(196, 35, 68, .25);
+}
+
+.start-button:hover,
+.module-button:hover {
+  background: linear-gradient(110deg, #ce2949, #ff5067 56%, #ad43a2);
+  box-shadow: 0 12px 32px rgba(196, 35, 68, .3);
+}
+
+.game-card,
+.unlock,
+.letter-card,
+.little-grid article,
+.playlist,
+.mini-credential,
+.nurse-badge,
+.module:not(.night-shift) {
+  border-color: var(--glass-border);
+  background: linear-gradient(145deg, rgba(23, 27, 36, .94), rgba(15, 18, 25, .92));
+  color: var(--text-primary);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255, 255, 255, .035);
+}
+
+.game-card::before {
+  background: linear-gradient(135deg, rgba(241, 59, 85, .17), transparent 38%, transparent 65%, rgba(193, 91, 190, .12));
+}
+
+.module:not(.night-shift):hover,
+.little-grid article:hover {
+  border-color: rgba(241, 59, 85, .3);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, .32), 0 0 30px rgba(241, 59, 85, .06);
+}
+
+.module:not(.night-shift) :is(h2, h3, h4, strong, b, dt, dd),
+.case-header h2,
+.test h3,
+.little-grid b,
+.playlist-title h2,
+.final-message h2,
+.love-game h2,
+.open-letters h2 {
+  color: var(--text-primary);
+}
+
+.module:not(.night-shift) :is(p, li, label),
+.test > p,
+.little-grid p,
+.playlist-title p,
+.song-info small,
+.final-message p {
+  color: var(--text-secondary);
+}
+
+.progress,
+.classified-progress {
+  background: #252b35;
+}
+
+.progress div,
+.classified-progress span {
+  background: linear-gradient(90deg, #a91c38, #fa4059 56%, #b34aa6);
+  box-shadow: 0 0 12px rgba(241, 59, 85, .34);
+}
+
+.heart-hunt span,
+.hunt-item,
+.treatment-grid button,
+.catch-heart,
+.song,
+.opened-letter,
+.game-unlocked,
+.diagnosis,
+.evolution-sheet,
+.consult-report,
+.secret-file,
+.orders-list .order-item,
+.clinical-symptoms,
+.case-status,
+.symptom-item,
+.romantic-files,
+.mini-game-sheet,
+.nursing-rank > div,
+.level-card,
+.nursing-options button {
+  border-color: var(--glass-border);
+  background: linear-gradient(145deg, rgba(30, 35, 45, .94), rgba(19, 23, 31, .96));
+  color: var(--text-primary);
+}
+
+.treatment-grid button:hover,
+.clinical-options button:hover,
+.nursing-options button:not(:disabled):hover,
+.level-card:not(:disabled):hover,
+.symptom-item:hover {
+  border-color: rgba(255, 101, 119, .55);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .25), 0 0 20px rgba(241, 59, 85, .1);
+}
+
+.diagnosis > div,
+.letter-buttons button,
+.order-item.checked,
+.symptom-item.checked,
+.mini-game-tabs button.selected {
+  border-color: rgba(241, 59, 85, .28);
+  background: rgba(147, 30, 53, .16);
+}
+
+.diagnosis small,
+.letter-top,
+.nursing-rank span,
+.question-meta,
+.evaluation-header,
+.mini-game-tabs button {
+  color: #ff8a9a;
+}
+
+.pulse-button {
+  border: 1px solid rgba(255, 101, 119, .3);
+  background: radial-gradient(circle, #25202a 0 48%, #341923 50% 100%);
+  color: #ff536b;
+  box-shadow: 0 0 0 8px rgba(241, 59, 85, .06), 0 0 42px rgba(241, 59, 85, .16);
+}
+
+.pulse-button::before,
+.pulse-button::after,
+.big-heart::before,
+.big-heart::after {
+  border-color: rgba(255, 101, 119, .2);
+}
+
+.unlock-icon,
+.big-heart,
+.album,
+.mini-heart {
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: linear-gradient(145deg, #3a1722, #211724);
+  color: #ff5a70;
+  box-shadow: 0 0 26px rgba(241, 59, 85, .14);
+}
+
+.letter-card {
+  background: linear-gradient(160deg, #171b23, #101319);
+}
+
+.letter-card::before {
+  background: repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(255, 255, 255, .035) 32px);
+}
+
+.letter-text,
+.signature {
+  color: #c4c9d2;
+}
+
+.signature strong,
+.little-grid span,
+.game-score,
+.opened-letter strong,
+.game-unlocked h3 {
+  color: #ff6577;
+}
+
+.song {
+  border: 1px solid var(--glass-border);
+}
+
+.song:hover,
+.local-song.is-active {
+  border-color: rgba(241, 59, 85, .38);
+  background: rgba(123, 30, 52, .22);
+}
+
+.playlist::after {
+  color: #ff6577;
+  opacity: .13;
+}
+
+.nurse-badge,
+.mini-credential {
+  color: #ff8a9a;
+}
+
+.module-nav {
+  border-color: rgba(255, 255, 255, .09);
+  background: rgba(10, 12, 17, .86);
+  scrollbar-color: #8e263d transparent;
+}
+
+.module-nav a {
+  border-color: rgba(255, 255, 255, .1);
+  background: rgba(24, 28, 37, .88);
+  color: #c1c6d0;
+}
+
+.module-nav a:hover,
+.module-nav a:focus-visible {
+  border-color: transparent;
+  background: linear-gradient(110deg, #b91f3d, #ef3b56 56%, #9a328e);
+}
+
+.medicine-label,
+.wristband,
+.certificate-paper,
+.scratch-card,
+.snellen-chart,
+.typewriter-paper,
+.iv-patient,
+.persistent-audio {
+  border-color: var(--glass-border);
+  background: #171b23;
+  color: var(--text-primary);
+}
+
+.medical-orders h2,
+.clinical-case h2,
+.classified-file h2,
+.next-file h2,
+.certificate-paper h3,
+.love-game h2,
+.open-letters h2 {
+  color: var(--text-primary);
+}
+
+.clinical-options button,
+.nursing-options button,
+.mini-game-tabs button,
+.numeric-answer input,
+.persistent-audio,
+.cover-note-button {
+  border-color: var(--glass-border);
+  background: #1b2029;
+  color: #e4e6eb;
+}
+
+.numeric-answer input:focus,
+.persistent-audio input,
+.track-timeline input {
+  accent-color: #f13b55;
+}
+
+.module :is(input, textarea, select) {
+  border-color: rgba(255, 255, 255, .16);
+  background-color: #11151d;
+  color: var(--text-primary);
+}
+
+.module :is(input, textarea, select):focus-visible,
+.module button:focus-visible,
+.start-button:focus-visible,
+.cover-note-button:focus-visible {
+  outline: 2px solid #ff6577;
+  outline-offset: 3px;
+}
+
+.snellen-row {
+  color: #f1f2f6;
+}
+
+.typewriter-paper {
+  border-left-color: rgba(255, 101, 119, .55);
+  color: #e1e4eb;
+}
+
+.wrong-answer,
+.medical-error,
+.audio-api-error {
+  border-color: rgba(241, 59, 85, .38);
+  background: rgba(132, 28, 49, .2);
+  color: #ffc0c8;
+}
+
+.correct-answer,
+.procedure-complete,
+.answer-feedback.is-correct,
+.evaluation-result {
+  border-color: rgba(75, 201, 155, .28);
+  background: rgba(16, 57, 43, .32);
+  color: #a9efd1;
+}
+
+footer {
+  border-color: rgba(255, 255, 255, .09);
+  color: #7e8795;
+}
+
+footer::before {
+  color: #ff6577;
+}
+
+::selection {
+  background: rgba(241, 59, 85, .35);
+  color: #fff;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0f15;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #722337;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f13b55;
+}
+
+@media (max-width: 560px) {
+  .topbar {
+    width: calc(100% - 24px);
+    padding: 9px 10px;
+  }
+
+  .logo strong {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+  }
+
+  .hero {
+    padding-inline: 18px;
+  }
+
+  .module-nav {
+    padding-block: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    animation: none;
+  }
+}
+
 /* ═══════════════════════════════════════════════════
    NEW MODULES (RAYOS X, BEEPER, RASPADITA)
    ═══════════════════════════════════════════════════ */

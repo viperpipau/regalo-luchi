@@ -405,3 +405,94 @@
 .exp002-progress-track span {
   background: linear-gradient(90deg, #235ba0, #d13b55 56%, #a447a1);
 }
+
+.exp002-paper {
+  border-color: rgba(255, 255, 255, .1);
+  background:
+    radial-gradient(ellipse at 90% 8%, rgba(153, 32, 63, .14), transparent 30%),
+    linear-gradient(145deg, #171b23, #101319);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .4);
+}
+
+.exp002-topbar {
+  border-bottom-color: rgba(255, 255, 255, .1);
+}
+
+.exp002-content {
+  color: #e7e9ee;
+}
+
+.exp002-content :is(h2, h3, h4, strong, b) {
+  color: #f1f2f6;
+}
+
+.exp002-content :is(p, label, .exp002-disclaimer, .exp002-level-preview > div) {
+  color: #b7bfca;
+}
+
+.exp002-credential,
+.exp002-monitor-card,
+.exp002-level-preview > div,
+.exp002-question-card,
+.exp002-answer-log,
+.exp002-dialog {
+  border-color: rgba(255, 255, 255, .12);
+  background: linear-gradient(145deg, #202530, #151922);
+  color: #e7e9ee;
+}
+
+.exp002-credential :is(.exp002-credential-head, .exp002-id-code),
+.exp002-small-label,
+.exp002-monitor-card > div b {
+  color: #aeb7c3;
+}
+
+.exp002-id-name,
+.exp002-welcome h2,
+.exp002-exam-heading h2 {
+  color: #f1f2f6;
+}
+
+.exp002-id-photo {
+  border-color: rgba(255, 255, 255, .12);
+  background: linear-gradient(145deg, #29222d, #1b2028);
+}
+
+.exp002-options button,
+.exp002-secondary-button {
+  border-color: rgba(255, 255, 255, .13);
+  background: #202530;
+  color: #e7e9ee;
+}
+
+.exp002-primary-button {
+  border-color: #a52c4b;
+  background: linear-gradient(110deg, #194987, #bd2b43 62%, #792b87);
+}
+
+.exp002-progress-track {
+  background: #292e39;
+}
+
+.exp002-progress-track span {
+  background: linear-gradient(90deg, #235ba0, #d13b55 56%, #a447a1);
+}
+
+.exp002-warning {
+  border-color: rgba(241, 59, 85, .27);
+  background: rgba(132, 28, 49, .18);
+}
+
+.exp002-dialog-backdrop {
+  background: rgba(4, 5, 8, .76);
+}
+
+.exp002-dialog :is(h2, p) {
+  color: #f1f2f6;
+}
+
+@media (max-width: 560px) {
+  .exp002-topbar {
+    background-size: 140px 140px, 140px 140px, auto;
+  }
+}

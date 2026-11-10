@@ -196,3 +196,59 @@
 .topbar-actions { display: flex; align-items: center; gap: 8px; }
 .cover-return { padding: 8px 11px; border: 1px solid var(--glass-border); border-radius: var(--r-full); background: var(--glass-bg); color: #b96b82; font-size: 8px; font-weight: 800; letter-spacing: 1px; }
 @media (max-width: 560px) { .cover-return { font-size: 0; } .cover-return::after { content: "CARÁTULA"; font-size: 8px; } }
+
+.cover-folder {
+  border-color: rgba(241, 59, 85, .28);
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(167, 35, 69, .16), transparent 40%),
+    linear-gradient(145deg, #171b23, #101319);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .45), 0 0 45px rgba(241, 59, 85, .08);
+}
+
+.cover-folder::before {
+  border-color: rgba(255, 101, 119, .18);
+}
+
+.cover-tab,
+.cover-note-button:hover {
+  background: linear-gradient(110deg, #b91f3d, #ef3b56 58%, #9a328e);
+}
+
+.cover-mark,
+.cover-folder h1,
+.cover-number,
+.cover-restricted,
+.cover-seal,
+.cover-data dd,
+.cover-message h2 {
+  color: #f4f5f8;
+}
+
+.cover-data,
+.cover-message,
+.cover-note-button {
+  border-color: rgba(255, 255, 255, .11);
+  background: rgba(12, 15, 21, .64);
+  color: #ff8a9a;
+}
+
+.cover-data dt {
+  color: #ff8595;
+}
+
+.cover-message p,
+.cover-data dd {
+  color: #c4c9d2;
+}
+
+.cover-seal {
+  opacity: .55;
+}
+
+.cover-return {
+  color: #ff8a9a;
+}
+
+.cover-note-button:focus-visible {
+  outline-color: #ff6577;
+}
