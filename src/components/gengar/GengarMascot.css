@@ -1,0 +1,101 @@
+.gengar-mascot {
+  position: fixed;
+  z-index: 12;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  image-rendering: pixelated;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.gengar-mascot:focus-visible {
+  outline: 2px solid #d95177;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.gengar-mascot__sprite {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: var(--sheet-width) var(--sheet-height);
+  background-position: 0 var(--frame-row-offset);
+  image-rendering: pixelated;
+  transform: scaleX(var(--facing));
+  animation: var(--frame-animation);
+}
+
+.gengar-mascot--APPEAR {
+  animation: gengar-arrive 0.45s ease-out both;
+}
+
+.gengar-mascot--DISAPPEAR::after {
+  position: absolute;
+  inset: 8%;
+  z-index: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 30% 72%, rgba(114, 81, 151, 0.82) 0 12%, transparent 13%),
+    radial-gradient(ellipse at 68% 68%, rgba(144, 113, 174, 0.78) 0 16%, transparent 17%),
+    radial-gradient(ellipse at 52% 38%, rgba(121, 93, 154, 0.72) 0 20%, transparent 21%);
+  content: "";
+  pointer-events: none;
+  animation: gengar-smoke 0.55s ease-out both;
+}
+
+.gengar-mascot--DISAPPEAR .gengar-mascot__sprite {
+  animation:
+    var(--frame-animation),
+    gengar-vanish 0.6s ease-in both;
+}
+
+@keyframes gengar-sprite-frames {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: var(--last-frame-offset);
+  }
+}
+
+@keyframes gengar-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gengar-vanish {
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.78);
+  }
+}
+
+@keyframes gengar-smoke {
+  from {
+    opacity: 0.8;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gengar-mascot,
+  .gengar-mascot__sprite,
+  .gengar-mascot--DISAPPEAR::after {
+    animation: none !important;
+  }
+}

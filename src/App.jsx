@@ -10,6 +10,7 @@ import Expediente002 from './components/Expediente002'
 import useExpedienteProgress from './hooks/useExpedienteProgress'
 import ExpedienteCover from './components/expediente/ExpedienteCover'
 import MusicPlayer from './components/audio/MusicPlayer'
+import GengarMascot from './components/gengar/GengarMascot'
 import NursingHub from './components/nursing/NursingHub'
 import { songs } from './data/songs'
 
@@ -394,10 +395,18 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  if (!coverOpened) return <ExpedienteCover onOpen={openCover} />
+  if (!coverOpened) {
+    return (
+      <>
+        <ExpedienteCover onOpen={openCover} />
+        <GengarMascot />
+      </>
+    )
+  }
 
   return (
-    <div className="app-shell">
+    <>
+      <div className="app-shell">
       <div className="floating f1">♡</div>
       <div className="floating f2">✦</div>
       <div className="floating f3">🩹</div>
@@ -1272,8 +1281,10 @@ function App() {
 
       {step >= 1 && <Expediente002 />}
 
-      <footer>Hecho a mano con código, amor y un poquito de locura. ♡</footer>
-    </div>
+        <footer>Hecho a mano con código, amor y un poquito de locura. ♡</footer>
+      </div>
+      <GengarMascot />
+    </>
   )
 }
 
