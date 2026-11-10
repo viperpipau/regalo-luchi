@@ -94,23 +94,39 @@ export default function GengarMascot() {
       timers.push(timer)
       return timer
     }
+    let activityTimer = null
+    let disappearanceTimer = null
     const scheduleActivities = () => {
-      clearTimers()
-      schedule(() => {
+      if (activityTimer !== null) window.clearTimeout(activityTimer)
+      activityTimer = schedule(() => {
+        activityTimer = null
         if (animationRef.current !== 'WALK') return
         changeAnimation('IDLE')
-        schedule(() => {
+        activityTimer = schedule(() => {
+          activityTimer = null
           if (animationRef.current !== 'IDLE') return
           changeAnimation('WALK')
           scheduleActivities()
         }, randomBetween(900, 1700))
       }, randomBetween(6500, 11000))
 
-      schedule(() => {
-        if (!['WALK', 'IDLE'].includes(animationRef.current)) return
-        clearTimers()
-        changeAnimation('DISAPPEAR')
-      }, randomBetween(26000, 42000))
+      if (disappearanceTimer === null) {
+        const startDisappearance = () => {
+          if (!['WALK', 'IDLE'].includes(animationRef.current)) {
+            disappearanceTimer = schedule(startDisappearance, 500)
+            return
+          }
+
+          disappearanceTimer = null
+          if (activityTimer !== null) {
+            window.clearTimeout(activityTimer)
+            activityTimer = null
+          }
+          changeAnimation('DISAPPEAR')
+        }
+
+        disappearanceTimer = schedule(startDisappearance, randomBetween(26000, 42000))
+      }
     }
     scheduleActivitiesRef.current = scheduleActivities
 
