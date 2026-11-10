@@ -353,3 +353,55 @@
     transition-duration: .01ms !important;
   }
 }
+
+.exp002-topbar {
+  position: relative;
+  overflow: hidden;
+  border-bottom-color: rgba(224, 67, 91, .55);
+  background:
+    repeating-radial-gradient(circle at 100% 0%, transparent 0 11px, rgba(255, 255, 255, .09) 12px 13px, transparent 14px 24px),
+    repeating-conic-gradient(from 0deg at 100% 0%, transparent 0deg 14deg, rgba(255, 255, 255, .08) 14.5deg 15deg, transparent 15.5deg 30deg),
+    linear-gradient(110deg, #121d3b 0%, #302044 58%, #571e3c 100%);
+  background-repeat: no-repeat;
+  background-position: right top, right top, center;
+  background-size: 190px 190px, 190px 190px, auto;
+}
+
+.exp002-brand-cross {
+  border: 1px solid rgba(255, 255, 255, .28);
+  background: linear-gradient(145deg, #194987, #bd2b43 72%, #742b82);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(205, 48, 91, .28);
+}
+
+.exp002-brand b { color: #fff; }
+.exp002-brand small { color: #d3b9d1; }
+.exp002-file-count { color: #d6c6d6; }
+.exp002-file-count b { color: #ff8296; }
+.exp002-reset-link { color: #f0a3d4; }
+.exp002-reset-link:hover { color: #fff; }
+
+.exp002-welcome h2 span {
+  color: #c52d48;
+  text-shadow: 2px 2px 0 rgba(30, 75, 141, .12);
+}
+
+.exp002-primary-button {
+  border-color: #9c315c;
+  background: linear-gradient(110deg, #194987, #bd2b43 62%, #792b87);
+  box-shadow: 0 7px 20px rgba(95, 39, 105, .2);
+}
+
+.exp002-primary-button:not(:disabled):hover {
+  background: linear-gradient(110deg, #2460a7, #d13a51 62%, #963da2);
+  box-shadow: 0 10px 24px rgba(95, 39, 105, .28);
+}
+
+.exp002-monitor-line path {
+  stroke: #bd4d9d;
+  filter: drop-shadow(0 0 3px rgba(189, 77, 157, .45));
+}
+
+.exp002-progress-track span {
+  background: linear-gradient(90deg, #235ba0, #d13b55 56%, #a447a1);
+}
