@@ -1,12 +1,12 @@
 # Gengar sprite sheet
 
 The sprite sheet is imported from
-`src/assets/gengar/gengar-sprites.jpg` by
+`src/assets/gengar/gengar-sprites.png` by
 `src/components/gengar/gengarConfig.js`.
 
-The sheet is **1136 × 944 pixels**, arranged in 6 columns and 5 rows. The
-current configuration derives the frame size from those dimensions. The
-checkerboard background is part of the JPEG image, not transparency.
+The sheet is **924 × 768 pixels**, arranged in 6 columns and 5 rows, with a
+transparent background. The current configuration derives the frame size from
+those dimensions.
 
 | Row | Animation | Frames | Default speed |
 | --- | --- | ---: | ---: |
