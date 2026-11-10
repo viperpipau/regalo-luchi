@@ -11,8 +11,8 @@ those dimensions.
 | Row | Animation | Frames | Default speed |
 | --- | --- | ---: | ---: |
 | 0 | WALK | 6 | 8 FPS |
-| 1 | IDLE | 4 | 4 FPS |
-| 2 | TURN | 4 | 8 FPS |
+| 1 | IDLE | 6 | 4 FPS |
+| 2 | TURN | 6 | 8 FPS |
 | 3 | DISAPPEAR | 6 | 10 FPS |
 | 4 | APPEAR | 6 | 10 FPS |
 

@@ -14,8 +14,8 @@ export const gengarConfig = {
   movementSpeed: 72,
   animations: {
     WALK: { row: 0, frames: 6, fps: 8, loop: true },
-    IDLE: { row: 1, frames: 4, fps: 4, loop: true },
-    TURN: { row: 2, frames: 4, fps: 8, loop: false },
+    IDLE: { row: 1, frames: 6, fps: 4, loop: true },
+    TURN: { row: 2, frames: 6, fps: 8, loop: false },
     DISAPPEAR: { row: 3, frames: 6, fps: 10, loop: false },
     APPEAR: { row: 4, frames: 6, fps: 10, loop: false },
   },
