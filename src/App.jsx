@@ -11,6 +11,7 @@ import useExpedienteProgress from './hooks/useExpedienteProgress'
 import ExpedienteCover from './components/expediente/ExpedienteCover'
 import MusicPlayer from './components/audio/MusicPlayer'
 import NursingHub from './components/nursing/NursingHub'
+import { songs } from './data/songs'
 
 const LETTER = `
 Después de todo lo que viví, después de los días difíciles,
@@ -122,6 +123,29 @@ const medicines = [
   { name: 'Quedate conmigo 24 h', icon: '🕰️', message: 'Tratamiento ideal: un día entero cerquita tuyo, sin mirar el reloj.' },
 ]
 
+
+const callPhotos = [
+  {
+    src: `${import.meta.env.BASE_URL}fotos/IMG-20261107-WA0001%284%29.jpg`,
+    alt: 'Selfie juntos durante una salida',
+  },
+  {
+    src: `${import.meta.env.BASE_URL}fotos/IMG-20261108-WA0020.jpg`,
+    alt: 'Un beso en una esquina de la ciudad',
+  },
+  {
+    src: `${import.meta.env.BASE_URL}fotos/IMG-20261108-WA0013.jpg`,
+    alt: 'Tira de fotos abrazados en la cabina',
+  },
+]
+
+const callSong = songs.find((song) => song.id === 'song-05')
+
+function formatCallTime(seconds) {
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = seconds % 60
+  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`
+}
 const letters = [
   { title: 'Abrir cuando estés cansado', message: 'No tenés que poder con todo todo el tiempo. Ojalá pudiera alcanzarte un abrazo, dejarte descansar y recordarte que también merecés que te cuiden.' },
   { title: 'Abrir cuando tengas un día de mierda', message: 'Este día no define quién sos ni todo lo bueno que hacés. Respirá: ya pasó una parte, y no tenés que atravesar lo que queda solo.' },
@@ -160,6 +184,7 @@ function App() {
   const [glassesOn, setGlassesOn] = useState(false)
   const [callStatus, setCallStatus] = useState('incoming')
   const [callTime, setCallTime] = useState(0)
+  const [callPhotoIndex, setCallPhotoIndex] = useState(0)
   const [typeIndex, setTypeIndex] = useState(0)
   
   const [bandaids, setBandaids] = useState(0)
@@ -679,33 +704,70 @@ function App() {
 
             <section className="module call-section" id="llamada">
               <div className="module-kicker">COMUNICACIÓN DIRECTA</div>
-              <h2>Línea de Emergencia</h2>
-              
-              <div className="phone-ui">
-                <div className="phone-screen">
-                  <div className="caller-info">
-                    <div className="caller-avatar">P</div>
-                    <h3>Paciente Favorita ♡</h3>
-                    <span>{callStatus === 'incoming' ? 'Llamada entrante...' : `Conectado - 00:${callTime < 10 ? '0'+callTime : callTime}`}</span>
+              <h2>Videollamada</h2>
+
+              <div className={`video-call ${callStatus}`}>
+                <div className="video-stage">
+                  <img src={callPhotos[callPhotoIndex].src} alt={callPhotos[callPhotoIndex].alt} />
+                  <div className="video-stage-shade" />
+                  <div className="call-live-label">
+                    <span />
+                    {callStatus === 'connected' ? 'EN LLAMADA' : callStatus === 'ended' ? 'LLAMADA FINALIZADA' : 'LLAMADA ENTRANTE'}
                   </div>
-                  
-                  {callStatus === 'incoming' ? (
-                    <div className="phone-actions">
-                      <button className="phone-btn decline" onClick={() => {}}>Decline</button>
-                      <button className="phone-btn accept" onClick={() => setCallStatus('connected')}>Accept</button>
-                    </div>
-                  ) : (
-                    <div className="phone-connected">
-                      <div className="audio-wave">
-                        <span style={{animationDelay: '0s'}}></span>
-                        <span style={{animationDelay: '0.2s'}}></span>
-                        <span style={{animationDelay: '0.4s'}}></span>
-                        <span style={{animationDelay: '0.1s'}}></span>
-                        <span style={{animationDelay: '0.3s'}}></span>
-                      </div>
+                  <div className="caller-info">
+                    <h3>Paciente Favorita ♡</h3>
+                    <span>{callStatus === 'connected' ? `Conectados · ${formatCallTime(callTime)}` : callStatus === 'ended' ? 'Hasta la próxima, Luchi' : 'Quiere verte un ratito'}</span>
+                  </div>
+                  <button
+                    type="button"
+                    className="photo-nav previous"
+                    onClick={() => setCallPhotoIndex((current) => (current - 1 + callPhotos.length) % callPhotos.length)}
+                    aria-label="Foto anterior"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    className="photo-nav next"
+                    onClick={() => setCallPhotoIndex((current) => (current + 1) % callPhotos.length)}
+                    aria-label="Foto siguiente"
+                  >
+                    ›
+                  </button>
+                  <span className="photo-count">{String(callPhotoIndex + 1).padStart(2, '0')} / {String(callPhotos.length).padStart(2, '0')}</span>
+                </div>
+
+                <div className="call-panel">
+                  {callStatus === 'incoming' && (
+                    <>
                       <p className="call-subtitle">"Hola Luchi... llamaba para decirte que me hacés muy feliz. Gracias por estar."</p>
-                      <button className="phone-btn hangup" onClick={() => { setCallStatus('incoming'); setCallTime(0); }}>Colgar</button>
-                    </div>
+                      <div className="phone-actions">
+                        <button type="button" className="phone-btn decline" onClick={() => setCallStatus('ended')}>Rechazar</button>
+                        <button type="button" className="phone-btn accept" onClick={() => { setCallTime(0); setCallStatus('connected') }}>Atender</button>
+                      </div>
+                    </>
+                  )}
+
+                  {callStatus === 'connected' && (
+                    <>
+                      <div className="call-song-heading">
+                        <span className="call-song-art" aria-hidden="true">♫</span>
+                        <span><strong>Ameri</strong><small>DUKI · sonando para vos</small></span>
+                      </div>
+                      <iframe
+                        className="call-song-player"
+                        src={`https://www.youtube-nocookie.com/embed/${callSong.youtubeId}?autoplay=1&controls=1&playsinline=1&rel=0`}
+                        title="DUKI - Ameri"
+                        allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                      <button type="button" className="phone-btn hangup" onClick={() => { setCallStatus('ended'); setCallTime(0) }}>Colgar</button>
+                    </>
+                  )}
+
+                  {callStatus === 'ended' && (
+                    <button type="button" className="phone-btn accept call-again" onClick={() => setCallStatus('incoming')}>Volver a llamar</button>
                   )}
                 </div>
               </div>

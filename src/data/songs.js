@@ -35,4 +35,13 @@ export const songs = [
     icon: '🖤',
     message: 'Para compartir auriculares, miradas y algún viaje que todavía nos debemos.',
   },
+  {
+    id: 'song-05',
+    title: 'Ameri',
+    artist: 'Duki',
+    youtubeId: 'G-H7OS_Mrc8',
+    startAt: 0,
+    icon: '🌎',
+    message: 'Para escucharla juntos, aunque sea a través de una pantalla.',
+  },
 ]
