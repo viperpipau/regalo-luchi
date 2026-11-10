@@ -1,7 +1,9 @@
+import spriteSheet from '../../assets/gengar/gengar-sprites.jpg'
+
 export const gengarConfig = {
-  spriteSheet: `${import.meta.env.BASE_URL}assets/gengar/gengar-sprites.png`,
-  frameWidth: 64,
-  frameHeight: 64,
+  spriteSheet,
+  frameWidth: 1136 / 6,
+  frameHeight: 944 / 5,
   columns: 6,
   rows: 5,
   displaySize: {

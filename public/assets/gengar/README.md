@@ -1,12 +1,12 @@
 # Gengar sprite sheet
 
-Add the provided transparent PNG sprite sheet at:
+The sprite sheet is imported from
+`src/assets/gengar/gengar-sprites.jpg` by
+`src/components/gengar/gengarConfig.js`.
 
-`public/assets/gengar/gengar-sprites.png`
-
-Default sheet dimensions are **384 × 320 pixels**. Each frame is **64 × 64
-pixels**, arranged in 6 columns and 5 rows. Keep each frame's background
-transparent and align the character consistently within the cells.
+The sheet is **1136 × 944 pixels**, arranged in 6 columns and 5 rows. The
+current configuration derives the frame size from those dimensions. The
+checkerboard background is part of the JPEG image, not transparency.
 
 | Row | Animation | Frames | Default speed |
 | --- | --- | ---: | ---: |
@@ -16,6 +16,5 @@ transparent and align the character consistently within the cells.
 | 3 | DISAPPEAR | 6 | 10 FPS |
 | 4 | APPEAR | 6 | 10 FPS |
 
-Unused cells in a row can remain transparent. To use different dimensions,
-column counts, row positions, frame counts, or speeds, update
-`src/components/gengar/gengarConfig.js` to match the supplied sheet.
+To use a different sheet, update `src/components/gengar/gengarConfig.js` to
+match its dimensions, column and row counts, frame counts, and speeds.
