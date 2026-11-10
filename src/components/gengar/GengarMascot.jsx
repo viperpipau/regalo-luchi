@@ -203,12 +203,12 @@ export default function GengarMascot() {
     '--frame-width': `${frameWidth}px`,
     '--frame-height': `${frameHeight}px`,
     '--frame-count': animationConfig.frames,
-    '--last-frame-offset': `${-(animationConfig.frames - 1) * frameWidth}px`,
+    '--last-frame-offset': `${-animationConfig.frames * frameWidth}px`,
     '--frame-row-offset': `${-animationConfig.row * frameHeight}px`,
     '--facing': facing,
     '--frame-animation': reducedMotion || animationConfig.frames < 2
       ? 'none'
-      : `gengar-sprite-frames ${animationConfig.frames / animationConfig.fps}s steps(${animationConfig.frames - 1}, end) ${animationConfig.loop ? 'infinite' : '1 both'}`,
+      : `gengar-sprite-frames ${animationConfig.frames / animationConfig.fps}s steps(${animationConfig.frames}, end) ${animationConfig.loop ? 'infinite' : '1 both'}`,
   }
 
   return (
