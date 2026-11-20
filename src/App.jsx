@@ -12,6 +12,7 @@ import ExpedienteCover from './components/expediente/ExpedienteCover'
 import MusicPlayer from './components/audio/MusicPlayer'
 import GengarMascot from './components/gengar/GengarMascot'
 import NursingHub from './components/nursing/NursingHub'
+import MemoriesGallery from './components/MemoriesGallery'
 import { songs } from './data/songs'
 
 const LETTER = `
@@ -495,6 +496,7 @@ function App() {
             <a href="#certificado">Certificado</a>
             <a href="#juego">Juego</a>
             <a href="#cartas">Cartas</a>
+            <a href="#recuerdos">Recuerdos</a>
             <a href="#evolucion">Evolución</a>
             <a href="#ordenes">Órdenes</a>
             <a href="#interconsulta">Cardiología</a>
@@ -1002,6 +1004,7 @@ function App() {
               {selectedLetter !== null && <article className="opened-letter" role="status"><span>PARA LEER DESPACITO</span><p>{letters[selectedLetter].message}</p><strong>Estoy con vos. ♡</strong></article>}
             </section>
 
+            <MemoriesGallery />
             <EvolutionNotes />
             <MedicalOrders
               completed={expedienteProgress.ordenesMedicas}
