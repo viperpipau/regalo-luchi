@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { gengarConfig } from './gengar/gengarConfig'
 import './NursingCelebration.css'
 
 const CONFETTI = ['♡', '✦', '✚', '💉', '🩺', '♥', '✿']
 const HUG_EMOJIS = ['❤️', '🥰', '😊', '💗', '🤗', '💞', '🩷']
+const LUCHI_SPRITE = '/fotos/file_00000000e0d8820e95237dca2b209143.png'
 
 export default function NursingCelebration({ open, onClose }) {
   const [letterOpened, setLetterOpened] = useState(false)
@@ -110,7 +110,7 @@ export default function NursingCelebration({ open, onClose }) {
         <div className="nursing-letter__sprite-wrap" aria-label="Sprite de Luchi">
           <span
             className="nursing-letter__sprite"
-            style={{ backgroundImage: `url("${gengarConfig.spriteSheet}")` }}
+            style={{ backgroundImage: `url("${LUCHI_SPRITE}")` }}
           />
         </div>
         <div className="nursing-letter__decoration" aria-hidden="true">🩺　💉　♥　✚　🩹</div>
