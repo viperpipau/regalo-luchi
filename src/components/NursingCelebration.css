@@ -1,0 +1,275 @@
+.nursing-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  isolation: isolate;
+}
+
+.nursing-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(67, 48, 73, 0.34);
+  backdrop-filter: blur(9px);
+  cursor: default;
+  animation: nursing-fade 0.45s ease both;
+}
+
+.nursing-letter {
+  position: relative;
+  z-index: 3;
+  width: min(620px, calc(100vw - 36px));
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  padding: clamp(28px, 5vw, 48px);
+  border: 1px solid rgba(226, 169, 194, 0.75);
+  border-radius: 30px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(176, 198, 220, 0.13) 32px),
+    linear-gradient(145deg, #fffdfb 0%, #fff7fa 58%, #f3effb 100%);
+  box-shadow: 0 28px 90px rgba(91, 66, 105, 0.24), inset 0 1px rgba(255,255,255,.95);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(28px) scale(.94) rotateX(8deg);
+  transform-origin: top center;
+  transition: opacity .65s ease, transform 1s cubic-bezier(.18,.75,.24,1);
+}
+
+.nursing-letter--open {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0);
+}
+
+.nursing-letter__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #eccad8;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .82);
+  color: #a96078;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nursing-letter__seal {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  border: 4px solid #fff7fa;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e99ab1, #cd718e);
+  color: white;
+  font-size: 23px;
+  box-shadow: 0 8px 20px rgba(174, 91, 120, .22);
+}
+
+.nursing-letter__sprite-wrap {
+  width: 86px;
+  height: 86px;
+  margin: 2px auto 10px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(240, 227, 246, .7);
+  box-shadow: inset 0 0 0 1px rgba(190, 164, 204, .25);
+}
+
+.nursing-letter__sprite {
+  display: block;
+  width: 86px;
+  height: 86px;
+  background-repeat: no-repeat;
+  background-size: 600% 500%;
+  background-position: 0 0;
+  image-rendering: pixelated;
+  transform: scale(.86);
+}
+
+.nursing-letter__decoration {
+  color: #d47d96;
+  font-size: 15px;
+  letter-spacing: 5px;
+  margin: 4px 0 12px;
+}
+
+.nursing-letter h2 {
+  margin: 0 0 16px;
+  color: #a65c74;
+  font-family: "Pacifico", "Brush Script MT", cursive;
+  font-size: clamp(28px, 6vw, 42px);
+  font-weight: 400;
+}
+
+.nursing-letter__text {
+  color: #75525f;
+  font-family: "Dancing Script", "Segoe Print", cursive;
+  font-size: clamp(16px, 3.2vw, 20px);
+  line-height: 1.68;
+}
+
+.nursing-letter__text p {
+  margin: 0 0 14px;
+}
+
+.nursing-letter__closing {
+  display: block;
+  margin: 16px 0 20px;
+  color: #be667f;
+  font-family: "Pacifico", "Brush Script MT", cursive;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 400;
+}
+
+.nursing-hug-button {
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ed99b1, #cf7d9a);
+  color: white;
+  box-shadow: 0 12px 26px rgba(194, 105, 137, .24);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.nursing-hug-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 30px rgba(194, 105, 137, .32);
+}
+
+.nursing-hug-button span {
+  margin-right: 7px;
+}
+
+.nursing-confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nursing-confetti span {
+  position: absolute;
+  left: var(--x);
+  top: -30px;
+  color: #aabed3;
+  font-size: clamp(12px, 2vw, 20px);
+  opacity: .72;
+  animation: nursing-confetti-fall var(--duration) var(--delay) linear infinite;
+}
+
+.nursing-confetti span:nth-child(3n) { color: #d6a9c6; }
+.nursing-confetti span:nth-child(4n) { color: #90bec5; }
+.nursing-confetti span:nth-child(5n) { color: #e7a5b7; }
+
+.virtual-hug {
+  position: fixed;
+  z-index: 120;
+  bottom: -50px;
+  font-size: var(--hug-size);
+  pointer-events: none;
+  animation: virtual-hug-float var(--hug-duration) var(--hug-delay) ease-in both;
+}
+
+.nursing-banner {
+  width: min(1180px, calc(100% - 32px));
+  margin: 18px auto -4px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid rgba(215, 170, 194, .55);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 247, 250, .94), rgba(238, 240, 250, .92));
+  color: #9c6073;
+  box-shadow: 0 10px 30px rgba(161, 108, 132, .09);
+  text-align: center;
+  animation: nursing-fade 1s ease both;
+}
+
+.nursing-banner__text {
+  line-height: 1.45;
+  animation: nursing-gentle-pulse 6s ease-in-out infinite;
+}
+
+.nursing-banner__button {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid #ddb2c2;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .72);
+  color: #a85e77;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@keyframes nursing-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes nursing-gentle-pulse {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: .72; transform: translateY(-1px); }
+}
+
+@keyframes nursing-confetti-fall {
+  0% { transform: translate3d(0, -20px, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: .75; }
+  100% { transform: translate3d(24px, calc(100vh + 50px), 0) rotate(360deg); opacity: .2; }
+}
+
+@keyframes virtual-hug-float {
+  0% { transform: translate(0, 0) scale(.6) rotate(-8deg); opacity: 0; }
+  12% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translate(var(--hug-drift), -105vh) scale(1.25) rotate(12deg); opacity: 0; }
+}
+
+@media (max-width: 620px) {
+  .nursing-banner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nursing-banner__button {
+    width: 100%;
+  }
+
+  .nursing-letter {
+    border-radius: 24px;
+  }
+
+  .nursing-letter__sprite-wrap,
+  .nursing-letter__sprite {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nursing-modal__backdrop,
+  .nursing-letter,
+  .nursing-banner,
+  .nursing-banner__text,
+  .nursing-confetti span,
+  .virtual-hug {
+    animation: none !important;
+    transition: none !important;
+  }
+}

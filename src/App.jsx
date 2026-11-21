@@ -13,6 +13,7 @@ import MusicPlayer from './components/audio/MusicPlayer'
 import GengarMascot from './components/gengar/GengarMascot'
 import NursingHub from './components/nursing/NursingHub'
 import MemoriesGallery from './components/MemoriesGallery'
+import NursingCelebration from './components/NursingCelebration'
 import { songs } from './data/songs'
 
 const LETTER = `
@@ -211,6 +212,19 @@ function App() {
   const [gameScore, setGameScore] = useState(0)
   const [gameTurn, setGameTurn] = useState(0)
   const [selectedLetter, setSelectedLetter] = useState(null)
+  const [nursingCelebrationOpen, setNursingCelebrationOpen] = useState(false)
+
+  useEffect(() => {
+    if (!coverOpened) return
+    try {
+      if (window.sessionStorage.getItem('nursing_day_celebrated') === 'true') return
+      const timer = window.setTimeout(() => setNursingCelebrationOpen(true), 700)
+      return () => window.clearTimeout(timer)
+    } catch {
+      const timer = window.setTimeout(() => setNursingCelebrationOpen(true), 700)
+      return () => window.clearTimeout(timer)
+    }
+  }, [coverOpened])
 
   const beeperMessages = [
     'BEEP BEEP: Emergencia, necesito un beso tuyo.',
@@ -428,6 +442,21 @@ function App() {
           <div className="case-number">CASO Nº 001</div>
         </div>
       </header>
+
+      <aside className="nursing-banner" aria-label="Celebración del Día de la Enfermería">
+        <div className="nursing-banner__text">
+          <span aria-hidden="true">💉 🩺 ❤️</span>{' '}
+          <strong>Feliz Día de la Enfermería.</strong>{' '}
+          Gracias por tu dedicación, cuidado y amor que salvan vidas cada día.
+        </div>
+        <button
+          type="button"
+          className="nursing-banner__button"
+          onClick={() => setNursingCelebrationOpen(true)}
+        >
+          Abrir carta especial ♡
+        </button>
+      </aside>
 
       <section className="hero">
         <div className="hero-stickers" aria-hidden="true">
@@ -1286,6 +1315,17 @@ function App() {
 
         <footer>Hecho a mano con código, amor y un poquito de locura. ♡</footer>
       </div>
+      <NursingCelebration
+        open={nursingCelebrationOpen}
+        onClose={() => {
+          try {
+            window.sessionStorage.setItem('nursing_day_celebrated', 'true')
+          } catch {
+            // La experiencia continúa aunque el almacenamiento de sesión no esté disponible.
+          }
+          setNursingCelebrationOpen(false)
+        }}
+      />
       <GengarMascot />
     </>
   )
