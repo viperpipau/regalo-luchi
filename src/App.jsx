@@ -11,6 +11,7 @@ import useExpedienteProgress from './hooks/useExpedienteProgress'
 import ExpedienteCover from './components/expediente/ExpedienteCover'
 import MusicPlayer from './components/audio/MusicPlayer'
 import GengarMascot from './components/gengar/GengarMascot'
+import LuchiMascot from './components/luchi/LuchiMascot'
 import NursingHub from './components/nursing/NursingHub'
 import MemoriesGallery from './components/MemoriesGallery'
 import NursingCelebration from './components/NursingCelebration'
@@ -415,6 +416,7 @@ function App() {
       <>
         <ExpedienteCover onOpen={openCover} />
         <GengarMascot />
+        <LuchiMascot />
       </>
     )
   }
@@ -1327,6 +1329,7 @@ function App() {
         }}
       />
       <GengarMascot />
+      <LuchiMascot />
     </>
   )
 }

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import LuchiSprite from './luchi/LuchiSprite'
 import './NursingCelebration.css'
 
 const CONFETTI = ['♡', '✦', '✚', '💉', '🩺', '♥', '✿']
 const HUG_EMOJIS = ['❤️', '🥰', '😊', '💗', '🤗', '💞', '🩷']
-const LUCHI_SPRITE = '/fotos/file_00000000e0d8820e95237dca2b209143.png'
 
 export default function NursingCelebration({ open, onClose }) {
   const [letterOpened, setLetterOpened] = useState(false)
@@ -107,11 +107,8 @@ export default function NursingCelebration({ open, onClose }) {
       <section className={`nursing-letter ${letterOpened ? 'nursing-letter--open' : ''}`}>
         <button className="nursing-letter__close" type="button" aria-label="Cerrar" onClick={handleClose}>×</button>
         <div className="nursing-letter__seal" aria-hidden="true">♡</div>
-        <div className="nursing-letter__sprite-wrap" aria-label="Sprite de Luchi">
-          <span
-            className="nursing-letter__sprite"
-            style={{ backgroundImage: `url("${LUCHI_SPRITE}")` }}
-          />
+        <div className="nursing-letter__sprite-wrap">
+          <LuchiSprite poseIndex={2} className="nursing-letter__sprite" />
         </div>
         <div className="nursing-letter__decoration" aria-hidden="true">🩺　💉　♥　✚　🩹</div>
         <h2 id="nursing-modal-title">Querido Luchi,</h2>
